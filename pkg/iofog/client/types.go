@@ -198,6 +198,11 @@ type GetAgentProvisionKeyResponse struct {
 	ExpireTimeMsUTC int64  `json:"expirationTime"`
 }
 
+type GetKubeletTokenResponse struct {
+	UserID string `json:"userId"`
+	Token  string `json:"token"`
+}
+
 type AgentInfo struct {
 	UUID                      string  `json:"uuid" yml:"uuid"`
 	Name                      string  `json:"name" yml:"name"`

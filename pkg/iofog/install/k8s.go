@@ -424,7 +424,10 @@ func (k8s *Kubernetes) CreateExtensionServices(user IofogUser) (err error) {
 	}); err != nil {
 		return
 	}
-	token := ctrlClient.GetAccessToken()
+	token, err := ctrlClient.GetKubeletToken()
+	if err != nil {
+		return
+	}
 
 	verbose("Deploying Operator and Kubelet")
 	// Create Scheduler resources
