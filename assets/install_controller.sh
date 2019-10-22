@@ -65,7 +65,7 @@ deploy_controller() {
 	fi
 	nvm install v10.16.3
 	nvm use v10.16.3
-	ln -Ffs $(which node) /usr/local/bin/node
+	sudo ln -Ffs $(which node) /usr/local/bin/node
 
 	# npmrc
 	if [ -z "$(command -v npmrc)" ]; then
