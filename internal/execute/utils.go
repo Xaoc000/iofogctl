@@ -46,7 +46,7 @@ func generateExecutor(header config.Header, namespace string, kindHandlers map[a
 
 	createExecutorFunc, found := kindHandlers[header.Kind]
 	if !found {
-		util.PrintNotify(fmt.Sprintf("Could not handle kind %s. Skipping document\n", header.Kind))
+		util.PrintNotify(fmt.Sprintf("Kind %s is not supported. Skipping resources of this kind", header.Kind))
 		return nil, nil
 	}
 

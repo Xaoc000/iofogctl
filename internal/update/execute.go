@@ -21,7 +21,7 @@ import (
 	updateagent "github.com/eclipse-iofog/iofogctl/internal/update/agent"
 	//updateagentconfig "github.com/eclipse-iofog/iofogctl/internal/update/agent-config"
 	//updateapplication "github.com/eclipse-iofog/iofogctl/internal/update/application"
-	//updateconnector "github.com/eclipse-iofog/iofogctl/internal/update/connector"
+	updateconnector "github.com/eclipse-iofog/iofogctl/internal/update/connector"
 	//updatecontroller "github.com/eclipse-iofog/iofogctl/internal/update/controller"
 	//updatecontrolplane "github.com/eclipse-iofog/iofogctl/internal/update/controlplane"
 	//updatemicroservice "github.com/eclipse-iofog/iofogctl/internal/update/microservice"
@@ -62,11 +62,11 @@ func updateAgent(namespace, name string, yaml []byte) (exe execute.Executor, err
 //func updateAgentConfig(namespace, name string, yaml []byte) (exe execute.Executor, err error) {
 //	return updateagentconfig.NewExecutor(updateagentconfig.Options{Namespace: namespace, Yaml: yaml, Name: name})
 //}
-//
-//func updateConnector(namespace, name string, yaml []byte) (exe execute.Executor, err error) {
-//	return updateconnector.NewExecutor(updateconnector.Options{Namespace: namespace, Yaml: yaml, Name: name})
-//}
-//
+
+func updateConnector(namespace, name string, yaml []byte) (exe execute.Executor, err error) {
+	return updateconnector.NewExecutor(updateconnector.Options{Namespace: namespace, Yaml: yaml, Name: name})
+}
+
 //func updateController(namespace, name string, yaml []byte) (exe execute.Executor, err error) {
 //	return updatecontroller.NewExecutor(updatecontroller.Options{Namespace: namespace, Yaml: yaml, Name: name})
 //}
@@ -77,7 +77,7 @@ var kindHandlers = map[apps.Kind]func(string, string, []byte) (execute.Executor,
 	//apps.ControlPlaneKind:  updateControlPlane,
 	apps.AgentKind: updateAgent,
 	//config.AgentConfigKind: updateAgentConfig,
-	//apps.ConnectorKind:     updateConnector,
+	apps.ConnectorKind: updateConnector,
 	//apps.ControllerKind:    updateController,
 }
 
